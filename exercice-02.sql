@@ -34,32 +34,46 @@ VALUES (NULL,'SASS',NULL)
 -- - description : La promo de l'année 2023
 -- - date de début : 15 mars 2023
 -- - date de fin : aucune
-
+INSERT INTO school_year(id, name, description, start_date, end_date) 
+VALUES (NULL,'Promo 2023','La promo de l\'année 2023','2023-07-11 15:00:00',NULL)
 
 -- Exo 2.3
 -- Créez une relation entre un student et un tag :
 -- - student : Toto (id 1)
 -- - tag : SASS (id inconnu)
 -- Note : c'est à vous de retrouver l'id du tag mais vous pouvez l'inscrire en dur dans la requête.
+INSERT INTO student_tag (student_id, tag_id) 
+VALUES (1,11)
 
 -- Exo 2.4
 -- Mettez à jour le tag `HTML` :
 -- description : Le HTML est un language de structuration de données.
+UPDATE tag
+SET description = 'Le HTML est un language de structuration de données.'
+WHERE name = 'HTML'
 
 -- Exo 2.5
 -- Mettez à jour le tag `Bash` :
 -- nom : Terminal Bash
 -- description : Le terminal Bash est l'interface en ligne de commande par défaut sous Linux.
+UPDATE tag
+SET name = 'Terminal Bash', description = 'Le terminal Bash est l\'interface en ligne de commande par défaut sous Linux'
+WHERE name = 'Bash'
 
 -- Exo 2.6
 -- Supprimez la relation entre un student et un tag :
 -- - student : Zacharie Evrard
 -- - tag : Terminal Bash
+SELECT * FROM `student` WHERE firstname = 'Zacharie' AND lastname = 'Evrard'; -> id: 100 et Bash.id = 10
+DELETE FROM student_tag
+WHERE student_id = 100 AND tag_id = 10;
 
 -- Exo 2.7
 -- Supprimez la relation entre un student et un project :
 -- - student : Arthur Lacombe
 -- - project : Dicta quia at qui
+SELECT * FROM `student` WHERE firstname = 'Arthur' AND lastname = 'Lacombe'; -> id: 16 
+SELECT *  FROM project WHERE name = 'Dicta quia at qui.'; -> id: 6
 
 -- Exo 2.8
 -- Supprimez toutes les relations entre un student et ses tags :
